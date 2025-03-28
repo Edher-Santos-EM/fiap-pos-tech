@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net9.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<LangVersion>latest</LangVersion>
+	</PropertyGroup>
+	
+	<ItemGroup>
+		<PackageReference Include="Microsoft.ML" Version="3.0.0" />
+		<PackageReference Include="Microsoft.ML.FastTree" Version="3.0.0" />
+		<PackageReference Include="Microsoft.ML.LightGbm" Version="3.0.0" />
+		<PackageReference Include="Microsoft.Data.Analysis" Version="0.21.0" />
+		<PackageReference Include="ScottPlot" Version="4.1.67" />
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <None Update="dropout-inaugural.csv">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
+</Project>
