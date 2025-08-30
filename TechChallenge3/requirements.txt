@@ -1,0 +1,55 @@
+# Core ML/AI libraries
+torch>=2.0.0
+transformers>=4.35.0
+datasets>=2.14.0
+tokenizers>=0.15.0
+
+# PEFT (Parameter Efficient Fine Tuning)
+peft>=0.7.0
+
+# Data processing
+pandas>=1.5.0
+numpy>=1.24.0
+scikit-learn>=1.3.0
+
+# Accelerate for distributed training and optimization
+accelerate>=0.24.0
+
+# Optional but recommended for better performance
+bitsandbytes>=0.41.0  # For 8-bit quantization
+flash-attn>=2.3.0     # For faster attention (CUDA required)
+
+# Logging and monitoring
+tqdm>=4.65.0
+wandb>=0.15.0         # Optional: for experiment tracking
+
+# Additional utilities
+psutil>=5.9.0         # For system monitoring
+GPUtil>=1.4.0         # For GPU monitoring
+
+# For working with different file formats
+openpyxl>=3.1.0       # Excel files
+jsonlines>=3.1.0      # JSONL files
+
+# Optional: For advanced features
+# sentencepiece>=0.1.99  # For certain tokenizers (like T5, Llama)
+# protobuf>=3.20.0       # For some model formats
+
+# Development and testing (optional)
+jupyter>=1.0.0
+ipykernel>=6.25.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Note: For Llama models, you might also need:
+# pip install git+https://github.com/huggingface/transformers.git
+
+# Installation commands:
+# pip install -r requirements.txt
+# py -m pip install requests
+# 
+# For CUDA support (recommended):
+# pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+#
+# For CPU-only:
+# pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
