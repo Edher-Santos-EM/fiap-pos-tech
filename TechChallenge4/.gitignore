@@ -1,0 +1,84 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Ambientes virtuais
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# PyCharm
+.idea/
+
+# VS Code
+.vscode/
+
+# Arquivos de configuração local
+*.local
+
+# Logs
+*.log
+
+# Arquivos de vídeo
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.flv
+*.wmv
+*.webm
+video.*
+
+# Pasta de saída (resultados gerados)
+output/
+
+# Arquivos temporários
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Sistema Operacional
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Modelos baixados (DeepFace, YOLO, etc.)
+*.h5
+*.pb
+*.pth
+*.pt
+*.onnx
+*.weights
+
+# Cache de bibliotecas e modelos
+# DeepFace (salva em ~/.deepface/weights/)
+.deepface/
+weights/
+
+# Ultralytics/YOLO (salva em ~/.cache/ultralytics/ ou projeto)
+.ultralytics/
+runs/
+models/
+
+# Transformers/Hugging Face (salva em ~/.cache/huggingface/)
+.cache/
+huggingface/
+
+# PyTorch (salva em ~/.cache/torch/)
+torch/
+checkpoints/
+
+# Arquivos de dados grandes
+*.zip
+*.tar.gz
+*.rar
