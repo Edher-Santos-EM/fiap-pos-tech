@@ -1,84 +1,80 @@
-# Python
+# Ambientes Virtuais
+venv/
+venv_*/
+env/
+ENV/
+.venv/
+venv_scenes/
+venv_emotions/
+venv_activities/
+
+# Arquivos Python
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
-
-# Ambientes virtuais
-venv/
-env/
-ENV/
-env.bak/
-venv.bak/
+*.egg-info/
+dist/
+build/
+*.egg
 
 # Jupyter Notebook
 .ipynb_checkpoints
+*.ipynb
 
-# PyCharm
-.idea/
+# Modelos e Weights (grandes)
+models/
+!models/.gitkeep
 
-# VS Code
-.vscode/
+# Cache do DeepFace
+.deepface/
 
-# Arquivos de configuração local
-*.local
+# Cache do Transformers
+.cache/
+transformers_cache/
 
-# Logs
-*.log
+# Vídeos (grandes)
+videos/
+!videos/.gitkeep
 
-# Arquivos de vídeo
+# Outputs (resultados gerados)
+output/
 *.mp4
 *.avi
-*.mov
-*.mkv
-*.flv
-*.wmv
-*.webm
-video.*
 
-# Pasta de saída (resultados gerados)
-output/
-
-# Arquivos temporários
-*.tmp
-*.temp
+# IDEs
+.vscode/
+.idea/
 *.swp
 *.swo
 *~
 
-# Sistema Operacional
+# Logs
+*.log
+logs/
+
+# OS
 .DS_Store
 Thumbs.db
-Desktop.ini
+desktop.ini
 
-# Modelos baixados (DeepFace, YOLO, etc.)
-*.h5
-*.pb
-*.pth
-*.pt
-*.onnx
-*.weights
+# Testes
+.pytest_cache/
+.coverage
+htmlcov/
 
-# Cache de bibliotecas e modelos
-# DeepFace (salva em ~/.deepface/weights/)
-.deepface/
-weights/
+# Temporários
+tmp/
+temp/
+*.tmp
+nul
+=1.10.0
 
-# Ultralytics/YOLO (salva em ~/.cache/ultralytics/ ou projeto)
-.ultralytics/
-runs/
-models/
+# Configurações locais
+config.local.yaml
+.env
+.env.local
 
-# Transformers/Hugging Face (salva em ~/.cache/huggingface/)
-.cache/
-huggingface/
-
-# PyTorch (salva em ~/.cache/torch/)
-torch/
-checkpoints/
-
-# Arquivos de dados grandes
-*.zip
-*.tar.gz
-*.rar
+# Claude Code
+.claude/

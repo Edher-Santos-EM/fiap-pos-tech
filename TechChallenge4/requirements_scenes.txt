@@ -1,0 +1,24 @@
+# ============================================================
+# Ambiente: venv_scenes
+# Propósito: Detecção de Cenas (Etapa 1)
+# ============================================================
+
+# Core - Processamento de Vídeo
+opencv-python>=4.8.0
+numpy>=1.24.0
+pillow>=10.0.0
+scipy>=1.10.0
+
+# Detecção de Cenas
+scenedetect[opencv]>=0.6.0
+
+# UI/Progress
+tqdm>=4.65.0
+rich>=13.0.0
+
+# Utilitários
+pyyaml>=6.0
+python-dateutil>=2.8.0
+
+# Nota: Este ambiente é mais leve e não precisa de TensorFlow/PyTorch
+# Apenas OpenCV e SceneDetect para separação de cenas

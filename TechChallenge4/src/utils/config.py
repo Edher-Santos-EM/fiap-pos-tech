@@ -1,9 +1,15 @@
 """Gerenciamento de configurações."""
 
 import yaml
-import torch
 from pathlib import Path
 from typing import Any, Dict
+
+# Import condicional do torch (só necessário para atividades)
+try:
+    import torch
+    TORCH_AVAILABLE = True
+except ImportError:
+    TORCH_AVAILABLE = False
 
 
 class Config:
@@ -27,8 +33,8 @@ class Config:
         'activity_analysis': {
             'confidence_threshold': 0.6,
             'show_skeleton': True,
-            'pose_model': 'models/yolov8n-pose.pt',
-            'object_model': 'models/yolov8n.pt'
+            'pose_model': 'models/yolo11x-pose.pt',
+            'object_model': 'models/yolo11x.pt'
         },
         'performance': {
             'batch_size': 16,
@@ -67,7 +73,12 @@ class Config:
         device_pref = self.config.get('device', 'auto')
 
         if device_pref == 'auto':
-            device = 'cuda' if torch.cuda.is_available() else 'cpu'
+            # Tentar usar torch se disponível, senão usar CPU
+            if TORCH_AVAILABLE:
+                device = 'cuda' if torch.cuda.is_available() else 'cpu'
+            else:
+                # Se torch não disponível, assumir CPU (para ambiente emotions)
+                device = 'cpu'
         else:
             device = device_pref
 
@@ -92,12 +103,12 @@ class Config:
         print("🎬 SISTEMA DE ANÁLISE DE VÍDEO")
         print("=" * 60)
 
-        if self.device == 'cuda':
+        if self.device == 'cuda' and TORCH_AVAILABLE:
             gpu_name = torch.cuda.get_device_name(0)
             vram = torch.cuda.get_device_properties(0).total_memory / 1e9
             print(f"🚀 GPU detectada: {gpu_name}")
             print(f"   VRAM disponível: {vram:.1f} GB")
         else:
-            print("⚠️  GPU não detectada - usando CPU (mais lento)")
+            print("⚠️  GPU não detectada ou usando ambiente CPU")
 
         print("=" * 60 + "\n")

@@ -1,0 +1,34 @@
+# ============================================================
+# Ambiente: venv_emotions
+# Propósito: Análise de Sentimentos (Etapa 2)
+# ============================================================
+
+# Core
+opencv-python>=4.8.0
+numpy>=1.24.0
+pillow>=10.0.0
+
+# UI/Progress
+tqdm>=4.65.0
+rich>=13.0.0
+
+# Visualização
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Utilitários
+pyyaml>=6.0
+python-dateutil>=2.8.0
+
+# Detecção de Faces e Emoções
+deepface>=0.0.79
+tf-keras>=2.20.0
+tensorflow>=2.20.0
+mediapipe>=0.10.0
+
+# GPU Support (opcional, instalar se tiver NVIDIA GPU)
+# Para CUDA 11.8: pip install tensorflow[and-cuda]
+# Para CUDA 12.x: as bibliotecas CUDA serão instaladas pelo setup
+
+# Nota: Este ambiente NÃO inclui transformers/protobuf
+# para evitar conflitos com VideoMAE

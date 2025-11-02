@@ -20,7 +20,7 @@ def main():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )
 
-    parser.add_argument('--input', '-i', required=True, help='Caminho do vídeo de entrada')
+    parser.add_argument('--input', '-i', default='videos/video.mp4', help='Caminho do vídeo de entrada')
     parser.add_argument('--output-dir', '-o', default='output/cenas', help='Diretório de saída')
     parser.add_argument('--threshold', '-t', type=float, default=25.0, help='Threshold de detecção')
     parser.add_argument('--min-duration', '-d', type=float, default=1.0, help='Duração mínima da cena (segundos)')

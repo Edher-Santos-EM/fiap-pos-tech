@@ -38,8 +38,8 @@ class HybridAnalyzer:
         device: str = "auto",
         videomae_confidence: float = 0.3,
         pose_confidence: float = 0.5,
-        pose_model: str = "yolo11x-pose.pt",
-        object_model: str = "yolo11x.pt"
+        pose_model: str = "models/yolo11x-pose.pt",
+        object_model: str = "models/yolo11x.pt"
     ):
         """
         Inicializa o analisador híbrido.

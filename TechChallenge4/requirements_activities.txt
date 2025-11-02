@@ -1,6 +1,12 @@
+# ============================================================
+# Ambiente: venv_activities
+# Propósito: Análise de Atividades (Etapa 3)
+# ============================================================
+
 # Core
 opencv-python>=4.8.0
 numpy>=1.24.0
+pillow>=10.0.0
 
 # YOLO e Deep Learning
 ultralytics>=8.0.0
@@ -10,9 +16,6 @@ torchvision>=0.15.0
 # GPU Support (opcional, instalar se tiver NVIDIA GPU)
 # Para CUDA 11.8: pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
 # Para CUDA 12.1: pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
-
-# Processamento de Imagem
-pillow>=10.0.0
 
 # UI/Progress
 tqdm>=4.65.0
@@ -26,7 +29,9 @@ seaborn>=0.12.0
 pyyaml>=6.0
 python-dateutil>=2.8.0
 
-# Detecção de Faces e Emoções
-deepface>=0.0.79
-tf-keras>=2.16.0
-tensorflow>=2.16.0
+# Análise de Atividades (Transformers + VideoMAE)
+transformers>=4.57.0
+protobuf>=6.33.0
+
+# Nota: Este ambiente usa PyTorch para VideoMAE
+# e NÃO inclui TensorFlow/DeepFace para evitar conflitos

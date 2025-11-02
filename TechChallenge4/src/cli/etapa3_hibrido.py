@@ -9,7 +9,19 @@ CLI para detectar atividades usando o melhor de VideoMAE e Análise de Pose:
 import argparse
 from pathlib import Path
 import sys
+import os
 from datetime import datetime
+
+# Forçar uso de PyTorch no transformers (desabilitar TensorFlow)
+os.environ['USE_TF'] = '0'
+os.environ['USE_TORCH'] = '1'
+
+# Configurar encoding UTF-8 para evitar erros no Windows
+if sys.platform == 'win32':
+    os.environ['PYTHONIOENCODING'] = 'utf-8'
+    import io
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
 
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 

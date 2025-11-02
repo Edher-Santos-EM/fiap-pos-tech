@@ -10,11 +10,14 @@ import numpy as np
 from pathlib import Path
 from typing import List, Dict, Any, Tuple
 from PIL import Image, ImageDraw, ImageFont
-from ..activities import (
-    ReadingActivity, PhoneActivity, WorkingActivity, DancingActivity, LaughingActivity, UnknownActivity
-)
+from ..activities.reading_activity import ReadingActivity
+from ..activities.phone_activity import PhoneActivity
+from ..activities.working_activity import WorkingActivity
+from ..activities.dancing_activity import DancingActivity
+from ..activities.laughing_activity import LaughingActivity
+from ..activities.unknown_activity import UnknownActivity
 from ..utils.progress_bar import create_progress_bar
-from .emotion_analyzer import EmotionAnalyzer  # NOVO: Para detectar emoções
+# EmotionAnalyzer não pode ser importado aqui (ambiente diferente - venv_emotions vs venv_activities)
 
 
 class ActivityAnalyzer:
@@ -55,12 +58,13 @@ class ActivityAnalyzer:
         self.sharpness_threshold = sharpness_threshold
         self.pose_model_path = pose_model_path
         self.object_model_path = object_model_path
-        self.use_emotions = use_emotions
+        # Desabilitar emoções - requer ambiente diferente (venv_emotions)
+        self.use_emotions = False
 
         # Modelos serão carregados sob demanda
         self.yolo_pose = None
         self.yolo_detect = None
-        self.emotion_analyzer = None  # NOVO: DeepFace para emoções
+        self.emotion_analyzer = None  # Não disponível neste ambiente
 
         # Instanciar detectores de atividade
         self.activity_detectors = [
@@ -158,30 +162,32 @@ class ActivityAnalyzer:
                         'bbox': bbox.tolist()
                     })
 
-            # 3. Detectar emoções faciais (NOVO)
+            # 3. Detectar emoções faciais - DESABILITADO
+            # Emoções não podem ser detectadas aqui porque EmotionAnalyzer
+            # requer MediaPipe/TensorFlow que estão em venv_emotions
             face_emotions = []
-            if self.use_emotions:
-                if self.emotion_analyzer is None:
-                    try:
-                        self.emotion_analyzer = EmotionAnalyzer(device=self.device)
-                    except Exception as e:
-                        print(f"⚠️  Não foi possível carregar DeepFace: {e}")
-                        self.use_emotions = False
-
-                if self.emotion_analyzer:
-                    try:
-                        faces = self.emotion_analyzer.detect_faces(frame)
-                        for face in faces:
-                            emotion_result = self.emotion_analyzer.classify_emotion(face['face_crop'])
-                            face_emotions.append({
-                                'bbox': face['bbox'],
-                                'emotion': emotion_result.get('dominant_emotion', 'neutral'),
-                                'emotion_confidence': emotion_result.get('confidence', 0.0),
-                                'all_emotions': emotion_result.get('emotions', {})
-                            })
-                    except Exception as e:
-                        # Silenciosamente ignorar erros de DeepFace
-                        pass
+            # if self.use_emotions:
+            #     if self.emotion_analyzer is None:
+            #         try:
+            #             self.emotion_analyzer = EmotionAnalyzer(device=self.device)
+            #         except Exception as e:
+            #             print(f"⚠️  Não foi possível carregar DeepFace: {e}")
+            #             self.use_emotions = False
+            #
+            #     if self.emotion_analyzer:
+            #         try:
+            #             faces = self.emotion_analyzer.detect_faces(frame)
+            #             for face in faces:
+            #                 emotion_result = self.emotion_analyzer.classify_emotion(face['face_crop'])
+            #                 face_emotions.append({
+            #                     'bbox': face['bbox'],
+            #                     'emotion': emotion_result.get('dominant_emotion', 'neutral'),
+            #                     'emotion_confidence': emotion_result.get('confidence', 0.0),
+            #                     'all_emotions': emotion_result.get('emotions', {})
+            #                 })
+            #         except Exception as e:
+            #             # Silenciosamente ignorar erros de DeepFace
+            #             pass
 
             # 4. Processar cada pessoa separadamente
             people_results = []

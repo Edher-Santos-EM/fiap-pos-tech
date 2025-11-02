@@ -22,8 +22,8 @@ def main():
 
     parser.add_argument('--input-dir', '-i', default='output/cenas', help='Diretório com cenas')
     parser.add_argument('--output-dir', '-o', default='output/atividades', help='Diretório de saída')
-    parser.add_argument('--pose-model', default='yolo11x-pose.pt', help='Modelo YOLO11 pose (x=melhor precisão)')
-    parser.add_argument('--object-model', default='yolo11x.pt', help='Modelo YOLO11 objetos (x=melhor precisão)')
+    parser.add_argument('--pose-model', default='models/yolo11x-pose.pt', help='Modelo YOLO11 pose (x=melhor precisão)')
+    parser.add_argument('--object-model', default='models/yolo11x.pt', help='Modelo YOLO11 objetos (x=melhor precisão)')
     parser.add_argument('--confidence', '-c', type=float, default=0.6, help='Confiança mínima')
     parser.add_argument('--sharpness', '-s', type=float, default=50.0, help='Threshold de nitidez (padrão: 50, menor=mais permissivo)')
     parser.add_argument('--device', '-d', default='auto', choices=['auto', 'cuda', 'cpu'], help='Dispositivo')
